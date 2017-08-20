@@ -15,6 +15,7 @@ function shoppingListHandler() {
       </div>
     </li>
     `)
+    $('.js-shopping-list-entry').val('')
   })
 }
 
