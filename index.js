@@ -1,4 +1,5 @@
 function shoppingListHandler() {
+  // add an item
   $('#js-shopping-list-form').submit(function(event) {
     event.preventDefault()
     const shoppingItem = $('.js-shopping-list-entry').val()
@@ -18,9 +19,15 @@ function shoppingListHandler() {
     $('.js-shopping-list-entry').val('')
   })
 
+  // check off an item
   $('.shopping-list').on('click', '.shopping-item-toggle', function() {
     const shoppingItem = $(this).closest("li").find('.shopping-item')
     shoppingItem.toggleClass('shopping-item__checked')
+  })
+
+  // delete an item
+  $('.shopping-list').on('click', '.shopping-item-delete', function() {
+    this.closest("li").remove()
   })
 }
 
