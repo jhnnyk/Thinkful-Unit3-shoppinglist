@@ -17,6 +17,11 @@ function shoppingListHandler() {
     `)
     $('.js-shopping-list-entry').val('')
   })
+
+  $('.shopping-list').on('click', '.shopping-item-toggle', function() {
+    const shoppingItem = $(this).closest("li").find('.shopping-item')
+    shoppingItem.toggleClass('shopping-item__checked')
+  })
 }
 
 shoppingListHandler();
