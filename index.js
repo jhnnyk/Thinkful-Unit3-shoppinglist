@@ -54,11 +54,23 @@ function handleNewItemSubmit() {
   })
 }
 
+function toggleCheckedForListItem(itemIndex) {
+  console.log("Toggling checked property for item at index " + itemIndex)
+  STORE[itemIndex].checked = !STORE[itemIndex].checked
+}
+
+function getItemIndexFromElement(item) {
+  const itemIndexString = $(item).closest('.js-item-index-element').attr('data-item-index')
+  return parseInt(itemIndexString, 10)
+}
 
 function handleItemCheckClicked() {
-  // listen for users checking/unchecking list items, and
-  // render them checked/unchecked accordingly
-  console.log('`handleItemCheckClicked` ran');
+  $('.js-shopping-list').on('click', `.js-item-toggle`, event => {
+    console.log('`handleItemCheckClicked` ran')
+    const itemIndex = getItemIndexFromElement(event.currentTarget)
+    toggleCheckedForListItem(itemIndex)
+    renderShoppingList()
+  })
 }
 
 
