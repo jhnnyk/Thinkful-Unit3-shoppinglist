@@ -1,34 +1,41 @@
-function shoppingListHandler() {
-  // add an item
-  $('#js-shopping-list-form').submit(function(event) {
-    event.preventDefault()
-    const shoppingItem = $('.js-shopping-list-entry').val()
-    $('.shopping-list').prepend(`
-    <li>
-      <span class="shopping-item">${shoppingItem}</span>
-      <div class="shopping-item-controls">
-        <button class="shopping-item-toggle">
-          <span class="button-label">check</span>
-        </button>
-        <button class="shopping-item-delete">
-          <span class="button-label">delete</span>
-        </button>
-      </div>
-    </li>
-    `)
-    $('.js-shopping-list-entry').val('')
-  })
+const STORE = [
+  {name: "apples", checked: false},
+  {name: "oranges", checked: false},
+  {name: "milk", checked: true},
+  {name: "bread", checked: false}
+];
 
-  // check off an item
-  $('.shopping-list').on('click', '.shopping-item-toggle', function() {
-    const shoppingItem = $(this).closest("li").find('.shopping-item')
-    shoppingItem.toggleClass('shopping-item__checked')
-  })
-
-  // delete an item
-  $('.shopping-list').on('click', '.shopping-item-delete', function() {
-    this.closest("li").remove()
-  })
+function renderShoppingList() {
+  // render the shopping list in the DOM
+  console.log('`renderShoppingList` ran');
 }
 
-shoppingListHandler();
+
+function handleNewItemSubmit() {
+  // listen for users adding a new shopping list item, then add
+  // to list and render list 
+  console.log('`handleNewItemSubmit` ran');
+}
+
+
+function handleItemCheckClicked() {
+  // listen for users checking/unchecking list items, and
+  // render them checked/unchecked accordingly
+  console.log('`handleItemCheckClicked` ran');
+}
+
+
+function handleDeleteItemClicked() {
+  // Listen for when users want to delete an item and 
+  // delete it
+  console.log('`handleDeleteItemClicked` ran')
+}
+
+function handleShoppingList() {
+  renderShoppingList();
+  handleNewItemSubmit();
+  handleItemCheckClicked();
+  handleDeleteItemClicked();
+}
+
+$(handleShoppingList);
