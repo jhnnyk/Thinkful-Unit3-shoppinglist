@@ -73,11 +73,18 @@ function handleItemCheckClicked() {
   })
 }
 
+function deleteListItem(itemIndex) {
+  console.log("Deleting list item: " + itemIndex)
+  STORE.splice(itemIndex, 1)
+}
 
 function handleDeleteItemClicked() {
-  // Listen for when users want to delete an item and 
-  // delete it
-  console.log('`handleDeleteItemClicked` ran')
+  $('.js-shopping-list').on('click', `.js-item-delete`, event => {
+    console.log('`handleDeleteItemClicked` ran')
+    const itemIndex = getItemIndexFromElement(event.currentTarget)
+    deleteListItem(itemIndex)
+    renderShoppingList()
+  })
 }
 
 function handleShoppingList() {
