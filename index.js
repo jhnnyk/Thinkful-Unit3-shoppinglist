@@ -37,11 +37,21 @@ function renderShoppingList() {
   $('.js-shopping-list').html(shoppingListItemsString)
 }
 
+function addItemToShoppingList(itemName) {
+  console.log(`Adding "${itemName}" to shopping list`)
+  STORE.push({name: itemName, checked: false})
+}
 
 function handleNewItemSubmit() {
-  // listen for users adding a new shopping list item, then add
-  // to list and render list 
-  console.log('`handleNewItemSubmit` ran');
+  $('#js-shopping-list-form').submit(function(event) {
+    event.preventDefault()
+    console.log('`handleNewItemSubmit` ran')
+    const newItemName = $('.js-shopping-list-entry').val()
+    console.log(newItemName)
+    $('.js-shopping-list-entry').val('')
+    addItemToShoppingList(newItemName)
+    renderShoppingList()
+  })
 }
 
 
